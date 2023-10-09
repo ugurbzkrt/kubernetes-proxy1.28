@@ -1,0 +1,19 @@
+## Kubernetes 1.28 side-car-proxy
+```
+kind: Pod
+…
+spec:
+ initContainers:
+ - name: vault-agent
+  image: hashicorp/vault:1.12.1
+ - name: istio-proxy
+  image: istio/proxyv2:1.16.0
+  args: ["proxy", "sidecar"]
+  restartPolicy: Always
+ containers:
+…
+```
+In this example, you have 2 initcontainers
+
+- vault-agent 
+- istio-proxy 
